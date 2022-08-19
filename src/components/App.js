@@ -33,18 +33,18 @@ function App() {
     return oneQuote.quote.toLowerCase().includes(filteredQuote.toLowerCase());
   })
 
-  .filter((oneQuote)  => {
+  .filter((oneCharacter)  => {
     if (filteredCharacter === 'all'){
       return true;
     }
-    return oneQuote.character === filteredCharacter;
+    return oneCharacter.character === filteredCharacter;
     
   })
 
-  .map((oneQuote, index) => {
+  .map((item, index) => {
     return (
     <li key={index}>
-      <p>{oneQuote.quote} <span>-{oneQuote.character}</span></p>
+      <p>{item.quote} <span>-{item.character}</span></p>
       
     </li>)
   });

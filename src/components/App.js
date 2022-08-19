@@ -15,7 +15,7 @@ function App() {
 
   const [filteredQuote, setFilteredQuote] = useState("");
 
-  const [filteredCharacter, setFilteredCharacter] = useState("Todos");
+  const [filteredCharacter, setFilteredCharacter] = useState("all");
  
 
   const handleFilterQuote = (event) => {
@@ -24,6 +24,7 @@ function App() {
   };
 
   const handleFilterCharacter = (event) => {
+    event.preventDefault();
     setFilteredCharacter(event.target.value);
   };
 
@@ -33,7 +34,11 @@ function App() {
   })
 
   .filter((oneQuote)  => {
-    return oneQuote.character.toLowerCase().includes(filteredCharacter.toLowerCase());
+    if (filteredCharacter === 'all'){
+      return true;
+    }
+    return oneQuote.character === filteredCharacter;
+    
   })
 
   .map((oneQuote, index) => {
@@ -100,7 +105,7 @@ function App() {
                 id="filteredCharacter"
                 value={filteredCharacter}
               >
-                <option value="">Todos</option>
+                <option value="all">Todos</option>
                 <option value="Ross">Ross</option>
                 <option value="Monica">Monica</option>
                 <option value="Joey">Joey</option>
